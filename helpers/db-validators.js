@@ -45,6 +45,18 @@ const existeProdcutoPorId = async( id ) => {
     }
 }
 
+// Validar Colecciones Permitidas
+
+const coleccionesPermitidas = ( coleccion = '', colecciones = [] ) => {
+
+    const include = colecciones.includes( coleccion );
+    if ( !include ) {
+        throw new Error(`La coleccion ${ coleccion } no es permitida, ${ colecciones }`)
+    }
+
+    return true;
+}
+
 
 
 
@@ -54,5 +66,6 @@ module.exports = {
     emailExiste,
     existeUsuarioPorId,
     existeCategoriaPorId,
-    existeProdcutoPorId
+    existeProdcutoPorId,
+    coleccionesPermitidas
 }
